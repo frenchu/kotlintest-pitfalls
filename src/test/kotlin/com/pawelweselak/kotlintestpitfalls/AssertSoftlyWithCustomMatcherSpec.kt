@@ -1,7 +1,11 @@
 package com.pawelweselak.kotlintestpitfalls
 
-import io.kotlintest.*
-import io.kotlintest.specs.StringSpec
+import io.kotest.assertions.assertSoftly
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.Matcher
+import io.kotest.matchers.MatcherResult
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import org.assertj.core.api.Assertions
 
 class AssertSoftlyWithCustomMatcherSpec : StringSpec({

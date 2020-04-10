@@ -1,5 +1,5 @@
 plugins {
-    val kotlinVersion = "1.3.61"
+    val kotlinVersion = "1.3.71"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     id("org.springframework.boot") version "2.2.4.RELEASE"
@@ -17,12 +17,11 @@ repositories {
 
 dependencyManagement {
     dependencies {
-        dependencySet("io.arrow-kt:0.10.3") {
-            entry("arrow-core-data")
-        }
-        dependencySet("io.kotlintest:3.4.2") {
-            entry("kotlintest-runner-junit5")
-            entry("kotlintest-extensions-spring")
+        dependencySet("io.kotest:4.0.3") {
+            entry("kotest-runner-junit5-jvm")
+            entry("kotest-assertions-core-jvm")
+            entry("kotest-extensions-spring-jvm")
+            entry("kotest-runner-console-jvm")
         }
     }
 }
@@ -33,9 +32,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-    testImplementation("io.kotlintest:kotlintest-runner-junit5")
-    testImplementation("io.kotlintest:kotlintest-extensions-spring")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm")
+    testImplementation("io.kotest:kotest-runner-console-jvm")
+    testImplementation("io.kotest:kotest-assertions-core-jvm")
+    testImplementation("io.kotest:kotest-extensions-spring-jvm")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude("org.junit.vintage", "junit-vintage-engine")
+        exclude("org.mockito", "mockito-junit-jupiter")
+        exclude("org.mockito", "mockito-core")
+    }
 }
 
 tasks {

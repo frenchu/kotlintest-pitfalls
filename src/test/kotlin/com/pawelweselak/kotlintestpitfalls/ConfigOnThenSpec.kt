@@ -1,7 +1,7 @@
 package com.pawelweselak.kotlintestpitfalls
 
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.BehaviorSpec
+import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.matchers.shouldBe
 
 class ConfigOnThenSpec : BehaviorSpec({
 
